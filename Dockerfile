@@ -1,9 +1,11 @@
-FROM node:14.19.1-alpine3.14
+FROM strapi/base
 
 WORKDIR /app
 
 COPY ./package.json ./
 COPY ./yarn.lock ./
+
+RUN apt-get update && apt-get install -y python
 
 RUN yarn install
 
